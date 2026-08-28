@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lập Lá Số Bát Tự – Tứ Trụ &amp; Luận Giải | Công thức Battu.Kabala</title>
+<meta name="description" content="Tạo Lá Số Bát Tự (Tứ Trụ – Tử Bình) và luận giải chi tiết: tứ trụ, tàng can, thập thần, nạp âm, trường sinh, thần sát, đại vận – lưu niên, bát trạch. Công thức tham chiếu battu.kabala.vn.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-in">
+    <div class="brand">
+      <div class="logo">八字</div>
+      <div>
+        <h1>Lá Số Bát Tự <span class="sub">Tứ Trụ · Tử Bình</span></h1>
+        <p class="tagline">Lập lá số – Luận giải vận mệnh theo công thức <b>battu.kabala.vn</b></p>
+      </div>
+    </div>
+    <nav>
+      <a href="#form" class="btn btn-ghost">Tạo lá số</a>
+      <a href="#cong-thuc" class="btn btn-ghost">Công thức</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ================= FORM ================= -->
+<section id="form" class="card form-card">
+  <h2 class="card-title">✦ Nhập thông tin sinh</h2>
+  <div class="form-grid">
+    <div class="field span2">
+      <label>Giới tính</label>
+      <div class="gender-switch">
+        <label class="g-opt"><input type="radio" name="gt" value="nam" checked><span>Nam</span></label>
+        <label class="g-opt"><input type="radio" name="gt" value="nu"><span>Nữ</span></label>
+      </div>
+    </div>
+    <div class="field"><label>Ngày sinh</label><select id="f-ngay"></select></div>
+    <div class="field"><label>Tháng sinh</label><select id="f-thang"></select></div>
+    <div class="field"><label>Năm sinh</label><select id="f-nam"></select></div>
+    <div class="field"><label>Giờ sinh</label><select id="f-gio"></select></div>
+    <div class="field"><label>Phút sinh</label><select id="f-phut"></select></div>
+    <div class="field"><label>Múi giờ (nơi sinh)</label><select id="f-tz"></select></div>
+    <div class="field span3">
+      <button id="btn-tao" class="btn btn-primary big">☯ Lấy Lá Số Bát Tự</button>
+    </div>
+  </div>
+  <p class="hint">💡 Nhập đầy đủ ngày – tháng – năm – giờ sinh và giới tính, nhấn <b>Lấy Lá Số Bát Tự</b> rồi kéo xuống xem lá số, đại vận 10 năm và phần <b>Luận giải</b>. Sinh 23:00–24:00 được tính là giờ Tý của ngày hôm sau (quy tắc truyền thống).</p>
+</section>
+
+<!-- ================= KẾT QUẢ ================= -->
+<div id="result" hidden>
+
+  <!-- Thẻ thông tin -->
+  <section class="card info-card">
+    <div class="info-top">
+      <div>
+        <div class="so-id">Lá Số Bát Tự <b id="so-id"></b></div>
+        <h2 id="info-tomtat"></h2>
+      </div>
+      <div class="info-actions">
+        <button class="btn" id="btn-in">🖨 In / Lưu PDF</button>
+        <button class="btn" id="btn-copy">📋 Copy dữ liệu</button>
+        <button class="btn" id="btn-link">🔗 Copy link</button>
+      </div>
+    </div>
+    <div class="info-grid" id="info-grid"></div>
+    <div class="warning" id="info-warning" hidden></div>
+  </section>
+
+  <!-- Bảng tứ trụ -->
+  <section class="card">
+    <div class="card-head">
+      <h2 class="card-title">✦ Tứ Trụ (Bát Tự)</h2>
+      <div class="switch-order">
+        <button class="chip active" data-order="0">Năm → Tháng → Ngày → Giờ</button>
+        <button class="chip" data-order="1">Giờ → Ngày → Tháng → Năm</button>
+      </div>
+    </div>
+    <div class="table-scroll">
+      <table class="tru-table" id="tru-table"></table>
+    </div>
+    <p class="legend" id="legend-tt"></p>
+  </section>
+
+  <!-- Ngũ hành -->
+  <section class="card">
+    <h2 class="card-title">✦ Cân bằng Ngũ hành</h2>
+    <div class="hanh-bars" id="hanh-bars"></div>
+    <p class="legend" id="hanh-note"></p>
+  </section>
+
+  <!-- Luận giải -->
+  <section class="card luan-giai">
+    <h2 class="card-title">✦ LUẬN GIẢI LÁ SỐ</h2>
+    <div id="luan-giai-body"></div>
+  </section>
+
+  <!-- Đại vận -->
+  <section class="card">
+    <div class="card-head">
+      <h2 class="card-title">✦ Đại Vận (chu kỳ 10 năm)</h2>
+      <span class="badge" id="dv-badge"></span>
+    </div>
+    <div class="table-scroll">
+      <table class="tru-table dv-table" id="dv-table"></table>
+    </div>
+    <div id="dv-detail" class="dv-detail"></div>
+    <h3 class="sub-title">Chu kỳ Đại Vận – Lưu Niên 10 năm <span class="legend-inline">(nhấn vào năm để xem chi tiết)</span></h3>
+    <div class="table-scroll">
+      <table class="ln-table" id="ln-table"></table>
+    </div>
+    <div id="ln-detail" class="dv-detail"></div>
+  </section>
+
+  <!-- Bát trạch -->
+  <section class="card">
+    <h2 class="card-title">✦ Phương Hướng (Bát Trạch theo mệnh quái)</h2>
+    <p class="legend" id="quai-note"></p>
+    <div class="huong-grid" id="huong-grid"></div>
+  </section>
+
+  <!-- Thần sát -->
+  <section class="card">
+    <h2 class="card-title">✦ Bảng Thần Sát</h2>
+    <div class="table-scroll">
+      <table class="sat-table" id="sat-table"></table>
+    </div>
+    <div id="sat-detail" class="dv-detail"></div>
+  </section>
+
+  <!-- Thai cung / Mệnh cung -->
+  <section class="card">
+    <h2 class="card-title">✦ Thai Cung · Mệnh Cung</h2>
+    <div class="cung-grid" id="cung-grid"></div>
+    <p class="legend" id="cung-note"></p>
+  </section>
+
+  <!-- Công thức -->
+  <section class="card" id="cong-thuc">
+    <h2 class="card-title">✦ Công thức lập lá số <span class="legend-inline">(tham chiếu battu.kabala.vn)</span></h2>
+    <div class="accordion" id="cong-thuc-body"></div>
+  </section>
+
+  <p class="disclaimer">⚠️ <b> Disclaimer:</b> Lá số và luận giải chỉ mang tính tham khảo, nghiên cứu văn hoá phương Đông — không thay thế tư vấn chuyên môn (y tế, tài chính, pháp lý). Vận mệnh nằm ở tâm và hành động của mỗi người. Thời gian tiết khí tính theo thuật toán thiên văn Meeus (sai số ±7 phút so với lịch thiên văn).</p>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><b>Bát Tự · Tứ Trụ · Tử Bình</b> — Công thức lập lá số tham chiếu <a href="https://battu.kabala.vn/" target="_blank" rel="noopener">battu.kabala.vn</a> (Giờ–Ngày–Tháng–Năm sinh → Tứ trụ, Tàng can, Thập thần, Nạp âm, Trường sinh, Thần sát, Đại vận, Bát trạch).</p>
+    <p class="small">Âm lịch theo thuật toán Hồ Ngọc Đức · Tiết khí theo kinh độ Mặt Trời (Meeus + ΔT + nutation) · Đơn giản hoá cho mục đích học tập.</p>
+  </div>
+</footer>
+
+<script src="assets/battu-core.js"></script>
+<script src="assets/battu-luangiai.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
