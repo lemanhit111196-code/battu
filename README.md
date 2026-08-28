@@ -21,15 +21,21 @@ mẫu của trang — xem [`CONG-THUC-LAP-LA-SO.md`](CONG-THUC-LAP-LA-SO.md)).
 
 ## Chạy trang web
 
-Trang tĩnh, không cần cài đặt:
+Trang tĩnh, không cần cài đặt. Cách khuyến nghị (server có header chống cache — trình duyệt luôn nhận bản mới nhất):
 
 ```bash
 cd battu
-python3 -m http.server 8000
-# mở http://localhost:8000
+node server.cjs      # mở http://localhost:8000
 ```
 
-(Hoặc mở trực tiếp `index.html` — mọi tính toán chạy 100 % phía trình duyệt.)
+Hoặc dùng server tĩnh bất kỳ:
+
+```bash
+python3 -m http.server 8000   # mở http://localhost:8000
+```
+
+(Hoặc mở trực tiếp `index.html` — mọi tính toán chạy 100 % phía trình duyệt.
+Nếu vừa cập nhật file, nhấn tải lại cứng Ctrl+F5 để trình duyệt bỏ bản cache cũ.)
 
 ## Cấu trúc
 
@@ -42,6 +48,8 @@ python3 -m http.server 8000
 | `assets/style.css` | Giao diện tối – vàng kim, responsive, bản in |
 | `test.mjs` | 61 phép kiểm chứng engine với lá số chuẩn kabala + tiết khí + âm lịch |
 | `test-ui.cjs` | Smoke-test giao diện (giả lập DOM) |
+| `test-html.cjs` | Kiểm toán cấu trúc HTML mọi khối render (tag cân bằng, số ô bảng) |
+| `server.cjs` | Server tĩnh kèm header chống cache (no-store với HTML) |
 | `CONG-THUC-LAP-LA-SO.md` | Tài liệu đầy đủ các công thức lập lá số đã trích xuất |
 
 ```bash
