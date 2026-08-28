@@ -53,7 +53,13 @@ setTimeout(() => {
     ['#result hidden', getOrCreate('#result').hidden === false],
     ['#so-id', !!getOrCreate('#so-id').textContent],
     ['#tru-table có Giáp Thìn', getOrCreate('#tru-table').innerHTML.includes('Giáp') && getOrCreate('#tru-table').innerHTML.includes('Thìn')],
-    ['#tru-table Bính Tý (đ摩 chủ)', getOrCreate('#tru-table').innerHTML.includes('Bính')],
+    ['#tru-table Bính Tý (nhật chủ)', getOrCreate('#tru-table').innerHTML.includes('Bính')],
+    ['#tru-table mỗi dòng đủ 5 ô <td>', (() => {
+      const html = getOrCreate('#tru-table').innerHTML;
+      const rows = html.match(/<tr><td class="rowlab">[\s\S]*?<\/tr>/g) || [];
+      return rows.length === 9 && rows.every(r => (r.match(/<td/g) || []).length === 5 && !/<\/td><(?!td|\/tr)/.test(r.replace(/<\/td><td/g, '</td><td')));
+    })()],
+    ['#tru-table Thìn gắn thẻ Thổ (không phải Kim)', /Thìn[\s\S]{0,220}?Thổ/.test(getOrCreate('#tru-table').innerHTML)],
     ['#hanh-bars 5 hàng', (getOrCreate('#hanh-bars').innerHTML.match(/hanh-row/g) || []).length === 5],
     ['#luan-giai-body có 10 mục', (getOrCreate('#luan-giai-body').innerHTML.match(/<h3>/g) || []).length === 10],
     ['#dv-table 10 vận', (getOrCreate('#dv-table').innerHTML.match(/<tr data-dv/g) || []).length === 10],

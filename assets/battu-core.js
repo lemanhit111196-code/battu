@@ -19,7 +19,7 @@ const HANH = ['Mộc', 'Hỏa', 'Thổ', 'Kim', 'Thủy'];
 const HANH_COLOR = { Mộc: '#58b368', Hỏa: '#ef5350', Thổ: '#d3a24a', Kim: '#dfe3e8', Thủy: '#54b8e8' };
 
 const CAN_HANH = i => HANH[Math.floor(i / 2)];            // GiápẤt=Mộc ... NhâmQuý=Thủy
-const CHI_HANH = [4, 3, 0, 0, 3, 1, 1, 3, 2, 2, 3, 4].map(i => HANH[i]); // Tý=Thủy...
+const CHI_HANH = [4, 2, 0, 0, 2, 1, 1, 2, 3, 3, 2, 4].map(i => HANH[i]); // Tý Thủy, Sửu Thổ, Dần Mộc, Mão Mộc, Thìn Thổ, Tỵ Hỏa, Ngọ Hỏa, Mùi Thổ, Thân Kim, Dậu Kim, Tuất Thổ, Hợi Thủy
 const CAN_AMDUONG = i => (i % 2 === 0 ? '+' : '-');       // + dương, - âm
 const CHI_AMDUONG = i => (i % 2 === 0 ? '+' : '-');
 

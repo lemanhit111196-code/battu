@@ -170,7 +170,7 @@ function renderTruTable() {
   const alr = [`<b>${al.nam}</b>`, `<b>${al.thang}${al.nhuan ? 'N' : ''}</b>`, `<b>${al.ngay}</b>`, `—`];
   const nl = [`<b>${so.input.nam}</b>`, `<b>${so.tietThang.ten}</b>`, `<b>${al.ngay}</b>`, `—`];
   const head = cols.map(i => `<th>${p[i].ten.toUpperCase()}<div class="tt-small">${B.canChi(p[i].idx60)}</div></th>`).join('');
-  const row = (label, cells) => `<tr><td class="rowlab">${label}</td>${cols.map(i => cells[i]).join('')}</tr>`;
+  const row = (label, cells) => `<tr><td class="rowlab">${label}</td>${cols.map(i => `<td>${cells[i]}</td>`).join('')}</tr>`;
 
   const canRow = p.map((x, i) => canCell(x.can, i === 2 ? '<b>Nhật Chủ</b>' : B.thapThan(so.dayCan, x.can), true));
   const chiRow = p.map(x => {

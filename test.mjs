@@ -71,9 +71,12 @@ for (const [ten, jdChuan] of chuan) {
   console.log(`${ok ? '✅' : '❌'} ${ten}: engine ${fmt(byName[ten])} (chuẩn ${fmt(jdChuan)}) lệch ${lechPhut}p`);
 }
 
+/* ---------- 2b. Hành của 12 địa chi (bảng chuẩn) ---------- */
+eq('Hành 12 chi', B.CHI_HANH.join(','), ['Thủy', 'Thổ', 'Mộc', 'Mộc', 'Thổ', 'Hỏa', 'Hỏa', 'Thổ', 'Kim', 'Kim', 'Thổ', 'Thủy'].join(','));
+eq('Hành 10 can', B.CAN_HANH(0) + B.CAN_HANH(2) + B.CAN_HANH(4) + B.CAN_HANH(6) + B.CAN_HANH(8), 'MộcHỏaThổKimThủy');
+
 /* ---------- 3. Âm lịch thêm mẫu ---------- */
-console.log('\n— Âm lịch thêm:');
-eq('Tết 2024 (10/02/2024)', [B.dl2al(10, 2, 2024, 7).ngay, B.dl2al(10, 2, 2024, 7).thang], [1, 1]);
+console.log('\n— Âm lịch thêm:');eq('Tết 2024 (10/02/2024)', [B.dl2al(10, 2, 2024, 7).ngay, B.dl2al(10, 2, 2024, 7).thang], [1, 1]);
 eq('28/01/2025 là 29 tháng Chạp năm Giáp Thìn', [B.dl2al(28, 1, 2025, 7).ngay, B.dl2al(28, 1, 2025, 7).thang, B.dl2al(28, 1, 2025, 7).nam], [29, 12, 2024]);
 const al = B.dl2al(1, 4, 2023, 7); // tháng nhuận? 2023 có tháng 2 nhuận: 22/03/2023 = 1/2 nhuận
 console.log('  01/04/2023 âm lịch:', JSON.stringify(B.dl2al(22, 3, 2023, 7)));
